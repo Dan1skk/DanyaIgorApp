@@ -38,17 +38,14 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.TopAppBar
 import androidx.compose.ui.layout.ContentScale
+import androidx.navigation.NavController
+import com.example.danyaigorapp.appnavigation.Routes
 
-
-@Preview(showBackground = true, showSystemUi = true)
-@Composable
-fun Landing_PR() {
-    LandingScreen()
-
-}
 
 @Composable
-fun LandingScreen(){
+fun LandingScreen(
+    navController: NavController
+){
 
     Scaffold(
         topBar = {LandingTopBar()},
@@ -66,28 +63,32 @@ fun LandingScreen(){
 
             LandingCard(header = "Schedule",
                 description = "Easily schedule event/games then find like minded players for battle. You up for it?",
-                image = R.drawable.image_5
+                image = R.drawable.image_5,
+                route = { navController.navigate(Routes.Login.route) }
             )
 
             Spacer(modifier = Modifier.height(10.dp))
 
             LandingCard(header = "Statistics",
                 description = "All data from previous and upcoming games can be found here ",
-                image = R.drawable.image_6
+                image = R.drawable.image_6,
+                route = { navController.navigate(Routes.Login.route) }
             )
 
             Spacer(modifier = Modifier.height(10.dp))
 
             LandingCard(header = "Discover  Combats",
                 description = "Find out what’s new and compete among players with new challenges and earn cash with game points ",
-                image = R.drawable.image_7
+                image = R.drawable.image_7,
+                route = { navController.navigate(Routes.Login.route) }
             )
 
             Spacer(modifier = Modifier.height(10.dp))
 
             LandingCard(header = "Message Players",
                 description = "Found the profile of a player that interests you? Start a conversation",
-                image = R.drawable.image_8
+                image = R.drawable.image_8,
+                route = { navController.navigate(Routes.Login.route) }
             )
 
             Spacer(modifier = Modifier.height(10.dp))

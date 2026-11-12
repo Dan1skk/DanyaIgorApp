@@ -43,16 +43,26 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.material3.Icon
+import androidx.compose.runtime.collectAsState
+import androidx.navigation.NavController
+import com.example.danyaigorapp.appnavigation.Routes
 
-@Preview(showBackground = true, showSystemUi = true)
+//@Preview(showBackground = true, showSystemUi = true)
+//@Composable
+//fun Login_PR() {
+//    Login()
+//
+//}
+
 @Composable
-fun Login_PR() {
-    Login()
+fun Login(
 
-}
+    navController: NavController,
+    vm: SingInVM
+){
 
-@Composable
-fun Login(){
+    val state = vm.state.collectAsState()
+
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -101,16 +111,14 @@ fun Login(){
         )
 
 
-        var email by remember { mutableStateOf("") }
-
         BasicTextField(
-            value = email,
-            onValueChange = { email = it },
+            value = state.value.email,
+            onValueChange = { vm.EmailUpdate(it) },
             modifier = Modifier
                 .padding(top = 24.dp, start = 52.dp, end = 176.dp)
                 .fillMaxWidth(),
             decorationBox = { innerTextField ->
-                if (email.isEmpty()) {
+                if (state.value.email.isEmpty()) {
                     Text("Email",
                         color = Color.Black,
                         fontSize =  12.sp)
@@ -151,8 +159,8 @@ fun Login(){
                 verticalAlignment = Alignment.CenterVertically
             ){
                 BasicTextField(
-                    value = password,
-                    onValueChange = { password = it },
+                    value = state.value.pass,
+                    onValueChange = { vm.PasswordUpdate(it) },
                     modifier = Modifier
                         .padding(start = 52.dp)
                         .fillMaxWidth()
@@ -166,7 +174,7 @@ fun Login(){
                     },
 
                     decorationBox = { innerTextField ->
-                        if (password.isEmpty()) {
+                        if (state.value.pass.isEmpty()) {
                             Text("Password",
                                 color = Color.Black,
                                 fontSize = 12.sp)
@@ -229,7 +237,7 @@ fun Login(){
             )
         )
         Button(
-            onClick = { },
+            onClick = { navController.navigate(Routes.LandingScreen.route) },
             shape = CircleShape,
             colors = ButtonDefaults.buttonColors(
                 containerColor = Color.Transparent

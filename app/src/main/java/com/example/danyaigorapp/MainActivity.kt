@@ -11,8 +11,10 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.danyaigorapp.appnavigation.AppNavigation
 import com.example.danyaigorapp.landing.LandingScreen
 import com.example.danyaigorapp.signin.Login
+import com.example.danyaigorapp.signin.SingInVM
 import com.example.danyaigorapp.ui.theme.DanyaIgorAppTheme
 
 class MainActivity : ComponentActivity() {
@@ -21,7 +23,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             DanyaIgorAppTheme {
-                Login()
+                AppNavigation()
             }
         }
     }

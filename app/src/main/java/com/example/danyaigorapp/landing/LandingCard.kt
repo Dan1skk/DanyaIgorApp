@@ -28,7 +28,8 @@ import com.example.danyaigorapp.R
 fun LandingCard(
     header: String,
     description: String,
-    image: Int
+    image: Int,
+    route: () -> Unit
 
 ){
     Box(
@@ -46,6 +47,7 @@ fun LandingCard(
                     )
                 )
             )
+            .clickable(onClick = route)
     ){
         Column(
             modifier = Modifier.padding(top = 30.dp, start = 24.dp, end = 126.dp)
