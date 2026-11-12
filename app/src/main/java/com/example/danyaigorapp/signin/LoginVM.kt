@@ -5,9 +5,9 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 
-class SingInVM() : ViewModel() {
+class LoginVM() : ViewModel() {
 
-    private val _state = MutableStateFlow(SingInState())
+    private val _state = MutableStateFlow(LoginState())
     val state = _state.asStateFlow()
 
     fun EmailUpdate(

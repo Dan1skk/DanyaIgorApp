@@ -7,4 +7,5 @@ sealed class Routes(
 
     object Login : Routes("Login")
     object LandingScreen : Routes("LandingScreen")
+    object CreateAccount : Routes("CreateAccount")
 }

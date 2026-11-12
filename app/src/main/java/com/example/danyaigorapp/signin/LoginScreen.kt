@@ -28,7 +28,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.danyaigorapp.R
@@ -58,7 +57,7 @@ import com.example.danyaigorapp.appnavigation.Routes
 fun Login(
 
     navController: NavController,
-    vm: SingInVM
+    vm: LoginVM
 ){
 
     val state = vm.state.collectAsState()
@@ -341,10 +340,10 @@ fun Login(
             contentAlignment = Alignment.Center
         ) {
             TextButton(
-                onClick = { }
+                onClick = { navController.navigate(Routes.CreateAccount.route)}
             ) {
                 Text(
-                    "Login",
+                    "Create Account",
                     color = Color(0xFFFA5075),
                     fontSize = 12.sp,
                     fontWeight = FontWeight.Bold
