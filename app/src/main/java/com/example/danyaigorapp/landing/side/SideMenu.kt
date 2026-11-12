@@ -44,12 +44,12 @@ fun SideMenu_PR() {
     SideMenu()
 
 }
-@OptIn(ExperimentalMaterial3Api::class)
+
 @Composable
 fun SideMenu(){
     Column(
         modifier = Modifier
-            .fillMaxSize() //.padding(start = 60.dp)
+            .fillMaxSize()
     ) {
         Icon(
             painter = painterResource(R.drawable.close_icon),

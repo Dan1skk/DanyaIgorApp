@@ -45,6 +45,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.example.danyaigorapp.appnavigation.Routes
 
@@ -52,7 +53,7 @@ import com.example.danyaigorapp.appnavigation.Routes
 @Composable
 fun CreateAccount(
     navController: NavController,
-    vm: CreateAccountVM
+    vm: CreateAccountVM = viewModel()
 ){
 
     val state = vm.state.collectAsState()
@@ -101,78 +102,16 @@ fun CreateAccount(
 
         )
 
-        var name by remember { mutableStateOf("") }
-
-        BasicTextField(
+        CreateAccountElement( "Full Name",
             value = state.value.full_name,
-            onValueChange = { vm.Full_Nmae(it)},
-            modifier = Modifier
-                .padding(top = 37.dp, start = 52.dp, end = 176.dp)
-                .fillMaxWidth(),
-            decorationBox = { innerTextField ->
-                if (state.value.full_name.isEmpty()) {
-                    Text("Full Name",
-                        color = Color.Black,
-                        fontSize =  12.sp)
-                }
-                innerTextField()
-            }
-        )
-        Spacer(modifier = Modifier.height(8.dp))
-        Box(
-            modifier = Modifier
-                .padding(start = 52.dp, end = 60.dp)
-                .fillMaxWidth()
-                .height(1.dp)
-                .background(
-                    brush = Brush.linearGradient(
-                        colors = listOf(
-                            Color(0xFFFF6480),
-                            Color(0xFFF22E63)
-                        )
-                    )
-                )
+            onValueChange = {vm.Full_Nmae(it) })
 
-
-        )
 
         Spacer(modifier = Modifier.height(0.dp))
 
-        var user by remember { mutableStateOf("") }
-
-        BasicTextField(
+        CreateAccountElement( "User Name",
             value = state.value.user_name,
-            onValueChange = {vm.User_Nmae(it)},
-            modifier = Modifier
-                .padding(top = 24.dp, start = 52.dp, end = 176.dp)
-                .fillMaxWidth(),
-            decorationBox = { innerTextField ->
-                if (state.value.user_name.isEmpty()) {
-                    Text("User Name",
-                        color = Color.Black,
-                        fontSize =  12.sp)
-                }
-                innerTextField()
-            }
-        )
-        Spacer(modifier = Modifier.height(8.dp))
-        Box(
-            modifier = Modifier
-                .padding(start = 52.dp, end = 60.dp)
-                .fillMaxWidth()
-                .height(1.dp)
-                .background(
-                    brush = Brush.linearGradient(
-                        colors = listOf(
-                            Color(0xFFFF6480),
-                            Color(0xFFF22E63)
-                        )
-                    )
-                )
-
-
-        )
-
+            onValueChange = {vm.User_Nmae(it) })
 
         Column(
             modifier = Modifier
@@ -248,42 +187,9 @@ fun CreateAccount(
 
         }
 
-        var email by remember { mutableStateOf("") }
-
-        BasicTextField(
+        CreateAccountElement( "Email",
             value = state.value.email,
-            onValueChange = { vm.Email(it)  },
-            modifier = Modifier
-                .padding(top = 24.dp, start = 52.dp, end = 176.dp)
-                .fillMaxWidth(),
-            decorationBox = { innerTextField ->
-                if (state.value.email.isEmpty()) {
-                    Text("Email",
-                        color = Color.Black,
-                        fontSize =  12.sp)
-                }
-                innerTextField()
-            }
-        )
-        Spacer(modifier = Modifier.height(8.dp))
-        Box(
-            modifier = Modifier
-                .padding(start = 52.dp, end = 60.dp)
-                .fillMaxWidth()
-                .height(1.dp)
-                .background(
-                    brush = Brush.linearGradient(
-                        colors = listOf(
-                            Color(0xFFFF6480),
-                            Color(0xFFF22E63)
-                        )
-                    )
-                )
-
-
-        )
-
-        var password by remember { mutableStateOf("") }
+            onValueChange = {vm.Email(it) })
 
         BasicTextField(
             value = state.value.password,
@@ -317,8 +223,6 @@ fun CreateAccount(
 
 
         )
-
-        var conf_password by remember { mutableStateOf("") }
 
         BasicTextField(
             value = state.value.conf_password,
