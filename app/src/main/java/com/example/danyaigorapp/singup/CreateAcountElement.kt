@@ -35,7 +35,7 @@ fun CreateAccountElement(
         decorationBox = { innerTextField ->
             if (value.isEmpty()) {
                 Text(header,
-                    color = Color.Black,
+//                    color = Color.Black,
                     fontSize =  12.sp)
             }
             innerTextField()
