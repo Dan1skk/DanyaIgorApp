@@ -10,13 +10,14 @@ import com.example.danyaigorapp.signin.Login
 import com.example.danyaigorapp.signin.LoginVM
 import com.example.danyaigorapp.singup.CreateAccount
 import com.example.danyaigorapp.singup.CreateAccountVM
+import com.example.danyaigorapp.splashscreen.SplashScreen
 
 @SuppressLint("ViewModelConstructorInComposable")
 @Composable
 fun AppNavigation(){
 
     val navController = rememberNavController()
-    NavHost(navController, startDestination = Routes.CreateAccount.route){
+    NavHost(navController, startDestination = Routes.SplashScreen.route){
 
         composable(Routes.Login.route) {
             Login(navController, LoginVM())
@@ -28,6 +29,10 @@ fun AppNavigation(){
 
         composable(Routes.CreateAccount.route){
             CreateAccount(navController, CreateAccountVM())
+        }
+
+        composable(Routes.SplashScreen.route){
+            SplashScreen(navController)
         }
 
 
