@@ -20,6 +20,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.DrawerValue
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -35,68 +36,95 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
+import androidx.compose.material3.ModalNavigationDrawer
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.rememberDrawerState
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.layout.ContentScale
 import androidx.navigation.NavController
 import com.example.danyaigorapp.appnavigation.Routes
+import com.example.danyaigorapp.landing.side.SideMenu
+import kotlinx.coroutines.launch
 
 
 @Composable
 fun LandingScreen(
     navController: NavController
 ){
+    val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
+    val scope = rememberCoroutineScope()
 
-    Scaffold(
-        topBar = {LandingTopBar()},
-
-        bottomBar = {LandingBottomBar()}
-
-
-    ) { innerPadding ->
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .verticalScroll(rememberScrollState())
-                .padding(innerPadding)
-        ) {
-
-            LandingCard(header = "Schedule",
-                description = "Easily schedule event/games then find like minded players for battle. You up for it?",
-                image = R.drawable.image_5,
-                route = { navController.navigate(Routes.Login.route) }
+    ModalNavigationDrawer(
+        drawerState = drawerState,
+        drawerContent = {
+            SideMenu(
+                navController = navController,
+                onLogoutClick = {
+                    scope.launch { drawerState.close() }
+                    navController.navigate("LandingScreen"){
+                        popUpTo(0)
+                    }
+                }
             )
+        }
+    ) {
+        Scaffold(
+            topBar = {LandingTopBar(onMenuClick = {
+                scope.launch { drawerState.open() }
+            })},
 
-            Spacer(modifier = Modifier.height(10.dp))
+            bottomBar = {LandingBottomBar()}
 
-            LandingCard(header = "Statistics",
-                description = "All data from previous and upcoming games can be found here ",
-                image = R.drawable.image_6,
-                route = { navController.navigate(Routes.Login.route) }
-            )
 
-            Spacer(modifier = Modifier.height(10.dp))
+        ) { innerPadding ->
+            Column(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .verticalScroll(rememberScrollState())
+                    .padding(innerPadding)
+            ) {
 
-            LandingCard(header = "Discover  Combats",
-                description = "Find out what’s new and compete among players with new challenges and earn cash with game points ",
-                image = R.drawable.image_7,
-                route = { navController.navigate(Routes.Login.route) }
-            )
+                LandingCard(header = "Schedule",
+                    description = "Easily schedule event/games then find like minded players for battle. You up for it?",
+                    image = R.drawable.image_5,
+                    route = { navController.navigate(Routes.SplashScreen.route) }
+                )
 
-            Spacer(modifier = Modifier.height(10.dp))
+                Spacer(modifier = Modifier.height(10.dp))
 
-            LandingCard(header = "Message Players",
-                description = "Found the profile of a player that interests you? Start a conversation",
-                image = R.drawable.image_8,
-                route = { navController.navigate(Routes.Login.route) }
-            )
+                LandingCard(header = "Statistics",
+                    description = "All data from previous and upcoming games can be found here ",
+                    image = R.drawable.image_6,
+                    route = { navController.navigate(Routes.Login.route) }
+                )
 
-            Spacer(modifier = Modifier.height(10.dp))
+                Spacer(modifier = Modifier.height(10.dp))
+
+                LandingCard(header = "Discover  Combats",
+                    description = "Find out what’s new and compete among players with new challenges and earn cash with game points ",
+                    image = R.drawable.image_7,
+                    route = { navController.navigate(Routes.Login.route) }
+                )
+
+                Spacer(modifier = Modifier.height(10.dp))
+
+                LandingCard(header = "Message Players",
+                    description = "Found the profile of a player that interests you? Start a conversation",
+                    image = R.drawable.image_8,
+                    route = { navController.navigate(Routes.Login.route) }
+                )
+
+                Spacer(modifier = Modifier.height(10.dp))
+
+            }
+
+
 
         }
 
 
-
     }
+
 
 }

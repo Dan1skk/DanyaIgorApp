@@ -29,7 +29,9 @@ import com.example.danyaigorapp.R
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun LandingTopBar(){
+fun LandingTopBar(
+    onMenuClick: () -> Unit
+){
     TopAppBar(
         title = { },
         navigationIcon = {
@@ -42,7 +44,7 @@ fun LandingTopBar(){
                 Box(
                     modifier = Modifier
                         .padding(top = 7.dp)
-                        .clickable { }
+                        .clickable { onMenuClick()}
                 ) {
                     Icon(
                         painter = painterResource(id = R.drawable.hamburger),
@@ -84,9 +86,8 @@ fun LandingTopBar(){
                 Spacer(modifier = Modifier.width(2.dp))
 
                 Text("Stone Stellar",
-                    fontSize = 10.sp,
-                    modifier = Modifier
-                        .padding(top = 0.dp))
+                    fontSize = 10.sp)
+
 
             }
         }

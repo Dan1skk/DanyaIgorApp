@@ -36,20 +36,18 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.text.PlatformTextStyle
 import androidx.compose.ui.text.TextStyle
+import androidx.navigation.NavController
 
-
-@Preview(showBackground = true, showSystemUi = true)
-@Composable
-fun SideMenu_PR() {
-    SideMenu()
-
-}
 
 @Composable
-fun SideMenu(){
+fun SideMenu(
+    navController: NavController,
+    onLogoutClick: () -> Unit
+){
     Column(
         modifier = Modifier
             .fillMaxSize()
+            .background(Color.White)
     ) {
         Icon(
             painter = painterResource(R.drawable.close_icon),
@@ -57,7 +55,7 @@ fun SideMenu(){
             tint = Color(0xFFFA5075),
             modifier = Modifier
                 .padding(top = 68.dp, start = 305.dp)
-                .clickable(onClick = {})
+                .clickable(onClick = {onLogoutClick()})
 
         )
 
@@ -136,31 +134,31 @@ fun SideMenu(){
 
         Spacer(modifier = Modifier.height(53.dp))
 
-        SideMenuList(R.drawable.profile, "My Profile")
+        SideMenuList(navController = navController, route = "CreateAccount",R.drawable.profile, "My Profile")
 
         Spacer(modifier = Modifier.height(34.4.dp))
 
-        SideMenuList(R.drawable.schedule, "Shedule")
+        SideMenuList(navController = navController, route = "CreateAccount",R.drawable.schedule, "Shedule")
 
         Spacer(modifier = Modifier.height(34.4.dp))
 
-        SideMenuList(R.drawable.statistics_icon, "Statistics")
+        SideMenuList(navController = navController, route = "CreateAccount",R.drawable.statistics_icon, "Statistics")
 
         Spacer(modifier = Modifier.height(34.4.dp))
 
-        SideMenuList(R.drawable.logout_icon, "Discover Combat")
+        SideMenuList(navController = navController, route = "CreateAccount",R.drawable.logout_icon, "Discover Combat")
 
         Spacer(modifier = Modifier.height(34.4.dp))
 
-        SideMenuList(R.drawable.chat, "Chat")
+        SideMenuList(navController = navController, route = "CreateAccount",R.drawable.chat, "Chat")
 
         Spacer(modifier = Modifier.height(34.4.dp))
 
-        SideMenuList(R.drawable.language_icon, "Change Language")
+        SideMenuList(navController = navController, route = "CreateAccount",R.drawable.language_icon, "Change Language")
 
         Spacer(modifier = Modifier.height(34.4.dp))
 
-        SideMenuList(R.drawable.change_skin, "Change App Skin")
+        SideMenuList(navController = navController, route = "CreateAccount",R.drawable.change_skin, "Change App Skin")
 
 
         Spacer(modifier = Modifier.height(101.25.dp))
@@ -175,7 +173,7 @@ fun SideMenu(){
                 painter = painterResource(id = R.drawable.logout_icon),
                 contentDescription = null,
                 tint = Color(0xFFFA5075),
-                modifier = Modifier.size(width =  18.dp, height = 18.dp)
+                modifier = Modifier.size(width =  18.dp, height = 18.dp).clickable(onClick = {onLogoutClick()})
             )
 
             Spacer(modifier = Modifier.width(18.dp))

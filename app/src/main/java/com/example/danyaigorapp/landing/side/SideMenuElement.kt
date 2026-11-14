@@ -1,6 +1,7 @@
 package com.example.danyaigorapp.landing.side
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -22,11 +23,14 @@ import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.example.danyaigorapp.R
 
 
 @Composable
 fun SideMenuList(
+    navController: NavController,
+    route: String,
     icon: Int,
     header: String
 ){
@@ -40,6 +44,7 @@ fun SideMenuList(
             modifier = Modifier
                 .size(15.47.dp)
                 .graphicsLayer(compositingStrategy = CompositingStrategy.Offscreen)
+                .clickable(onClick = {navController.navigate(route)})
         ) {
             Icon(
                 painter = painterResource(icon),
@@ -59,6 +64,8 @@ fun SideMenuList(
                         )
                     )
             )
+
+
         }
 
         Spacer(modifier = Modifier.width(24.1.dp))
@@ -66,6 +73,8 @@ fun SideMenuList(
         Text(header,
             fontSize = 16.sp,
         )
+
+
 
     }
 

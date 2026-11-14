@@ -9,4 +9,5 @@ sealed class Routes(
     object LandingScreen : Routes("LandingScreen")
     object CreateAccount : Routes("CreateAccount")
     object SplashScreen : Routes("SplashScreen")
+    object ScheduleGame : Routes("SheduleScreen")
 }

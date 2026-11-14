@@ -7,6 +7,7 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import com.example.danyaigorapp.appnavigation.AppNavigation
 import com.example.danyaigorapp.appnavigation.Routes
+import com.example.danyaigorapp.schedulegame.ScheduleScreen
 import com.example.danyaigorapp.singup.CreateAccount
 import com.example.danyaigorapp.singup.CreateAccountVM
 import com.example.danyaigorapp.ui.theme.DanyaIgorAppTheme
