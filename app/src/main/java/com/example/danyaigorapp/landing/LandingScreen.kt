@@ -104,7 +104,7 @@ fun LandingScreen(
                 LandingCard(header = "Discover  Combats",
                     description = "Find out what’s new and compete among players with new challenges and earn cash with game points ",
                     image = R.drawable.image_7,
-                    route = { navController.navigate(Routes.Login.route) }
+                    route = { navController.navigate(Routes.DiscoverCombats.route) }
                 )
 
                 Spacer(modifier = Modifier.height(10.dp))

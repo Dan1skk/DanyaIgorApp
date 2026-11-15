@@ -173,6 +173,7 @@ fun SuccessfulMessage(
                     fontSize = 14.sp,
                     fontWeight = FontWeight.Bold
                 )
+
             }
 
         }

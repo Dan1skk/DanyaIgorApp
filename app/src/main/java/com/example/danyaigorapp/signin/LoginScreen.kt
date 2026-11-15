@@ -62,6 +62,7 @@ fun Login(
 
     val state = vm.state.collectAsState()
 
+
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -81,9 +82,7 @@ fun Login(
                     .size(width =  321.dp, height = 247.dp)
             )
         }
-
         Spacer(modifier = Modifier.height(41.dp))
-
         Text(
             "Welcome Back!",
             color = Color(0xFFFA5075),
@@ -93,10 +92,7 @@ fun Login(
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(start = 52.dp, end = 99.dp)
-
-
         )
-
         Text(
             "Hi, Kindly login to continue battle",
             fontSize = 12.sp,
@@ -108,8 +104,6 @@ fun Login(
 
 
         )
-
-
         BasicTextField(
             value = state.value.email,
             onValueChange = { vm.EmailUpdate(it) },
@@ -139,13 +133,9 @@ fun Login(
                         )
                     )
                 )
-
-
         )
-
         var password by remember { mutableStateOf("") }
         var isPasswordVisible by remember { mutableStateOf(false) }
-
         Column(
             modifier = Modifier
                 .fillMaxSize()
@@ -164,25 +154,20 @@ fun Login(
                         .padding(start = 52.dp)
                         .fillMaxWidth()
                         .weight(1f),
-
-
                     visualTransformation = if (isPasswordVisible) {
                         VisualTransformation.None
                     } else {
                         PasswordVisualTransformation()
                     },
-
                     decorationBox = { innerTextField ->
                         if (state.value.pass.isEmpty()) {
                             Text("Password",
                                 color = Color.Black,
                                 fontSize = 12.sp)
-
                         }
                         innerTextField()
                     }
                 )
-
                 IconButton(
                     onClick = { isPasswordVisible = !isPasswordVisible }
                 ) {
@@ -193,8 +178,6 @@ fun Login(
                     )
                 }
             }
-
-
             Box(
                 modifier = Modifier
                     .padding(start = 52.dp, end = 60.dp)
@@ -208,7 +191,6 @@ fun Login(
                             )
                         )
                     )
-
             )
 
             Text(
@@ -221,8 +203,6 @@ fun Login(
                     .clickable(onClick = {})
 
             )
-
-
         }
 
         Spacer(modifier = Modifier.height(27.dp))
@@ -263,7 +243,6 @@ fun Login(
                     fontWeight = FontWeight.Bold
                 )
             }
-
         }
 
 
@@ -350,8 +329,6 @@ fun Login(
                 )
             }
         }
-
-
     }
 }
 

@@ -5,8 +5,11 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.text.input.TextFieldState
+import androidx.compose.runtime.remember
 import com.example.danyaigorapp.appnavigation.AppNavigation
 import com.example.danyaigorapp.appnavigation.Routes
+import com.example.danyaigorapp.discovercombats.DiscoverCombatsScreen
 import com.example.danyaigorapp.schedulegame.ScheduleScreen
 import com.example.danyaigorapp.singup.CreateAccount
 import com.example.danyaigorapp.singup.CreateAccountVM
@@ -20,6 +23,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             DanyaIgorAppTheme {
+
                 AppNavigation()
 
             }

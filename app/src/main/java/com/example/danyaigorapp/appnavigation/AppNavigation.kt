@@ -13,6 +13,8 @@ import com.example.danyaigorapp.signin.LoginVM
 import com.example.danyaigorapp.singup.CreateAccount
 import com.example.danyaigorapp.singup.CreateAccountVM
 import com.example.danyaigorapp.splashscreen.SplashScreen
+import com.example.danyaigorapp.appnavigation.Routes.DiscoverCombats
+import com.example.danyaigorapp.discovercombats.DiscoverCombatsScreen
 
 @SuppressLint("ViewModelConstructorInComposable")
 @Composable
@@ -39,6 +41,10 @@ fun AppNavigation(){
 
         composable(Routes.ScheduleGame.route){
             ScheduleScreen(navController)
+        }
+
+        composable(Routes.DiscoverCombats.route) {
+            DiscoverCombatsScreen()
         }
 
 

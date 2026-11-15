@@ -11,5 +11,6 @@ sealed class Routes(
     object SplashScreen : Routes("SplashScreen")
 
     object ScheduleGame : Routes("ScheduleScreen")
+    object DiscoverCombats : Routes("DiscoverCombats")
 
 }
