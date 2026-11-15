@@ -23,10 +23,14 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.example.danyaigorapp.R
 
 @Composable
-fun LandingBottomBar(){
+fun LandingBottomBar(
+    navController: NavController
+){
     Box(
         modifier = Modifier
             .fillMaxWidth()
@@ -49,7 +53,7 @@ fun LandingBottomBar(){
                 .border(
                     5.dp, Color.White, CircleShape
                 )
-                .clickable { },
+                .clickable{navController.navigate("ScheduleScreen")},
             contentAlignment = Alignment.Center
 
 

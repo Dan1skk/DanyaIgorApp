@@ -1,5 +1,6 @@
 package com.example.danyaigorapp.schedulegame
 
+import android.icu.text.UnicodeSetSpanner
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -46,10 +47,11 @@ import com.example.danyaigorapp.singup.CreateAccountVM
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.movableContentWithReceiverOf
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.draw.blur
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import com.example.danyaigorapp.appnavigation.Routes
-
+import com.example.danyaigorapp.schedulegame.successfulpublisced.SuccessfulMessage
 
 
 @Composable
@@ -59,147 +61,158 @@ fun ScheduleScreen(
 ){
 
     val state = vm.state.collectAsState()
-
+    var showSuccess by remember { mutableStateOf(false) }
     Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(horizontal = 30.dp)
+        modifier = Modifier.fillMaxSize().blur(if(showSuccess) 14.dp else 0.dp)
     ) {
-
-        Box(
+        Column(
             modifier = Modifier
-                .padding(top = 60.dp)
-                .size(20.dp, 14.dp)
-                .clickable(onClick = {})
-        ){
+                .fillMaxSize()
+                .padding(horizontal = 30.dp)
 
-            Icon(
-                painter = painterResource(R.drawable.back_icon),
-                contentDescription = null,
-                tint = Color(0xFFF22E63)
-            )
-
-        }
-
-        Spacer(modifier = Modifier.height(35.dp))
-
-        Text(
-            "Schedule Game",
-            fontSize = 22.sp,
-            fontWeight = FontWeight(700),
-            color = Color(0xFFF22E63),
-        )
-
-        Spacer(modifier = Modifier.height(30.dp))
-
-        ScheduleScreenElement(
-            "Game Name",
-            state.value.game_name,
-            onValueChange = {vm.Game_Name(it)}
-        )
-
-        Spacer(modifier = Modifier.height(24.dp))
-
-        ScheduleScreenElement(
-            "Category",
-            state.value.category,
-            onValueChange = {vm.Category(it)}
-        )
-
-        Spacer(modifier = Modifier.height(18.dp))
-
-        ScheduleScreenElement(
-            "Winning Price",
-            state.value.winning_price,
-            onValueChange = {vm.Winning_Price(it)}
-        )
-
-        Spacer(modifier = Modifier.height(251.dp))
-
-        ScheduleScreenElement(
-            "Description",
-            state.value.description,
-            onValueChange = {vm.Description(it)}
-        )
-
-        Spacer(modifier = Modifier.height(55.dp))
-
-        Row(
-            modifier = Modifier
-                .fillMaxWidth(),
-            verticalAlignment = Alignment.CenterVertically
-
-        ){
-            Text(
-                "REMINDERS",
-                fontSize = 12.sp,
-                color = Color(0xFFF22E63)
-            )
-
-            Spacer(modifier = Modifier.weight(1f))
-
-            var checked by remember { mutableStateOf(false) }
-
-            Checkbox(
-                checked = checked,
-                onCheckedChange = { checked = it },
-                colors = CheckboxDefaults.colors(
-                    checkedColor = Color(0xFFF22E63),
-                    checkmarkColor = Color.White,
-                    uncheckedColor = Color(0xFFF22E63)
-                ),
-
-            )
-
-            Text(
-                "Notification",
-                fontSize = 12.sp
-            )
-        }
-
-        val ButtonGradient = Brush.linearGradient(
-            colors = listOf(
-                Color(0xFFFF6480),
-                Color(0xFFF22E63)
-            )
-        )
-        Button(
-            onClick = {  },
-            shape = CircleShape,
-            colors = ButtonDefaults.buttonColors(
-                containerColor = Color.Transparent
-
-            ),
-            contentPadding = PaddingValues(0.dp),
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(top = 30.dp, start = 66.dp, end = 75.dp)
-                .size(width = 224.dp, height = 58.dp)
         ) {
+
             Box(
                 modifier = Modifier
-                    .fillMaxWidth()
-                    .clip(CircleShape)
-                    .background(ButtonGradient)
-                    .padding(vertical = 16.dp),
-                contentAlignment = Alignment.Center,
+                    .padding(top = 60.dp)
+                    .size(20.dp, 14.dp)
+                    .clickable(onClick = {navController.navigate(Routes.LandingScreen.route)})
+            ){
 
-                ) {
+                Icon(
+                    painter = painterResource(R.drawable.back_icon),
+                    contentDescription = null,
+                    tint = Color(0xFFF22E63)
+                )
+
+            }
+
+            Spacer(modifier = Modifier.height(35.dp))
+
+            Text(
+                "Schedule Game",
+                fontSize = 22.sp,
+                fontWeight = FontWeight(700),
+                color = Color(0xFFF22E63),
+            )
+
+            Spacer(modifier = Modifier.height(30.dp))
+
+            ScheduleScreenElement(
+                "Game Name",
+                state.value.game_name,
+                onValueChange = {vm.Game_Name(it)}
+            )
+
+            Spacer(modifier = Modifier.height(24.dp))
+
+            ScheduleScreenElement(
+                "Category",
+                state.value.category,
+                onValueChange = {vm.Category(it)}
+            )
+
+            Spacer(modifier = Modifier.height(18.dp))
+
+            ScheduleScreenElement(
+                "Winning Price",
+                state.value.winning_price,
+                onValueChange = {vm.Winning_Price(it)}
+            )
+
+            Spacer(modifier = Modifier.height(251.dp))
+
+            ScheduleScreenElement(
+                "Description",
+                state.value.description,
+                onValueChange = {vm.Description(it)}
+            )
+
+            Spacer(modifier = Modifier.height(55.dp))
+
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth(),
+                verticalAlignment = Alignment.CenterVertically
+
+            ){
                 Text(
-                    text = "Publish",
-                    fontSize = 14.sp,
-                    fontWeight = FontWeight.Bold
+                    "REMINDERS",
+                    fontSize = 12.sp,
+                    color = Color(0xFFF22E63)
+                )
+
+                Spacer(modifier = Modifier.weight(1f))
+
+                var checked by remember { mutableStateOf(false) }
+
+                Checkbox(
+                    checked = checked,
+                    onCheckedChange = { checked = it },
+                    colors = CheckboxDefaults.colors(
+                        checkedColor = Color(0xFFF22E63),
+                        checkmarkColor = Color.White,
+                        uncheckedColor = Color(0xFFF22E63)
+                    ),
+
+                    )
+
+                Text(
+                    "Notification",
+                    fontSize = 12.sp
                 )
             }
 
+            val ButtonGradient = Brush.linearGradient(
+                colors = listOf(
+                    Color(0xFFFF6480),
+                    Color(0xFFF22E63)
+                )
+            )
+            Button(
+                onClick = {showSuccess = true},
+                shape = CircleShape,
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = Color.Transparent
+
+                ),
+                contentPadding = PaddingValues(0.dp),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(top = 30.dp, start = 66.dp, end = 75.dp)
+                    .size(width = 224.dp, height = 58.dp)
+            ) {
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .clip(CircleShape)
+                        .background(ButtonGradient)
+                        .padding(vertical = 16.dp),
+                    contentAlignment = Alignment.Center,
+
+                    ) {
+                    Text(
+                        text = "Publish",
+                        fontSize = 14.sp,
+                        fontWeight = FontWeight.Bold
+                    )
+                }
+
+            }
+
+
+
         }
-
-
-
-
-
-
+    }
+    if(showSuccess){
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(Color(0xFFA5075).copy(alpha = 0.8f)),
+            contentAlignment = Alignment.Center
+        ){SuccessfulMessage(navController = navController)}
 
     }
+
 
 }

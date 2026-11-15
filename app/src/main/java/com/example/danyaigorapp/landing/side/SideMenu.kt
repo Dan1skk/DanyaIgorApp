@@ -138,7 +138,7 @@ fun SideMenu(
 
         Spacer(modifier = Modifier.height(34.4.dp))
 
-        SideMenuList(navController = navController, route = "CreateAccount",R.drawable.schedule, "Shedule")
+        SideMenuList(navController = navController, route = "ScheduleScreen",R.drawable.schedule, "Shedule")
 
         Spacer(modifier = Modifier.height(34.4.dp))
 

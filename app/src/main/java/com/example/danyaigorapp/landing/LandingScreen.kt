@@ -74,7 +74,7 @@ fun LandingScreen(
                 scope.launch { drawerState.open() }
             })},
 
-            bottomBar = {LandingBottomBar()}
+            bottomBar = {LandingBottomBar(navController = navController)}
 
 
         ) { innerPadding ->

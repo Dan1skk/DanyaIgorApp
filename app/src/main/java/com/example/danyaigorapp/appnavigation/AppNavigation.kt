@@ -6,6 +6,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.danyaigorapp.landing.LandingScreen
+import com.example.danyaigorapp.landing.side.SideMenu
 import com.example.danyaigorapp.schedulegame.ScheduleScreen
 import com.example.danyaigorapp.signin.Login
 import com.example.danyaigorapp.signin.LoginVM
