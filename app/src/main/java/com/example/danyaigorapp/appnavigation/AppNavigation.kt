@@ -44,7 +44,7 @@ fun AppNavigation(){
         }
 
         composable(Routes.DiscoverCombats.route) {
-            DiscoverCombatsScreen()
+            DiscoverCombatsScreen(navController)
         }
 
 

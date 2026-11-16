@@ -6,11 +6,15 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.statusBarsPadding
+import androidx.compose.foundation.layout.systemBarsPadding
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.overscroll
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.input.TextFieldState
@@ -20,6 +24,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.ListItem
 import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.ModalNavigationDrawer
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SearchBar
 import androidx.compose.material3.SearchBarDefaults
 import androidx.compose.material3.Text
@@ -46,6 +51,8 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.input.pointer.motionEventSpy
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
+import com.example.danyaigorapp.landing.LandingBottomBar
+import com.example.danyaigorapp.schedulegame.ScheduleScreen
 import com.example.danyaigorapp.schedulegame.successfulpublisced.SuccessfulMessage
 
 //@Preview(showBackground = true, showSystemUi = true)
@@ -56,68 +63,31 @@ import com.example.danyaigorapp.schedulegame.successfulpublisced.SuccessfulMessa
 
 @Composable
 fun DiscoverCombatsScreen(
-
+    navController: NavController
 ){
+    Scaffold(
 
+        bottomBar = {DiscoverCombatsBottomBar(navController = navController)},
+        contentWindowInsets = WindowInsets(0.dp),
+        containerColor = Color.Transparent,
 
-    Column(
-        modifier = Modifier
-            .fillMaxWidth()
-            .background(brush = Brush.linearGradient(
-            colors = listOf(
-                Color(0xFFFF6480),
-                Color(0xFFF22E63)
-            )))
-            .size(266.dp)
-    ) {
+        ) {innerPadding ->
         Column(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(horizontal = 30.dp)
+                .systemBarsPadding()
         ) {
-            Spacer(modifier = Modifier.height(60.dp))
 
-            Icon(
-                painter = painterResource(R.drawable.back_icon),
-                contentDescription = null,
-                tint = Color.White,
-                )
+            SearchPlace()
 
-            Spacer(modifier = Modifier.height(35.dp))
-
-            Row(
-                modifier = Modifier.fillMaxWidth()
-            ){
-                Text(
-                    "Discover \nCombats",
-                    fontSize = 22.sp,
-                    fontWeight = FontWeight(700),
-                    color = Color.White
-
-                )
-
-                Spacer(modifier = Modifier.weight(1f))
-
-                Text(
-                    "FILTER",
-                    fontSize = 12.sp,
-                    fontWeight = FontWeight(700),
-                    color = Color.White,
-                    modifier = Modifier.padding(top = 30.dp)
-
-                )
-            }
-
-            Spacer(modifier = Modifier.height(20.dp))
-
-
-
-
+            LazyColumn(
+                Modifier.fillMaxWidth().padding(innerPadding)
+            ) { }
         }
 
 
-
-
     }
+
+
 
 }
