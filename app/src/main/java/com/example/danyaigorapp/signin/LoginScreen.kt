@@ -6,7 +6,6 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -32,8 +31,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.danyaigorapp.R
 import androidx.compose.foundation.text.BasicTextField
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.TextButton
 import androidx.compose.ui.Alignment
@@ -45,6 +42,9 @@ import androidx.compose.material3.Icon
 import androidx.compose.runtime.collectAsState
 import androidx.navigation.NavController
 import com.example.danyaigorapp.appnavigation.Routes
+import com.example.diuikit.components.AppButton
+import com.example.diuikit.components.appBasicTextField.BasicTextFieldBlya
+import com.example.diuikit.components.appBasicTextField.BasicTextFieldPassword
 
 //@Preview(showBackground = true, showSystemUi = true)
 //@Composable
@@ -104,106 +104,36 @@ fun Login(
 
 
         )
-        BasicTextField(
+
+        Spacer(modifier = Modifier.height(40.dp))
+
+        BasicTextFieldBlya(
+            header = "Email",
             value = state.value.email,
-            onValueChange = { vm.EmailUpdate(it) },
-            modifier = Modifier
-                .padding(top = 24.dp, start = 52.dp, end = 176.dp)
-                .fillMaxWidth(),
-            decorationBox = { innerTextField ->
-                if (state.value.email.isEmpty()) {
-                    Text("Email",
-                        color = Color.Black,
-                        fontSize =  12.sp)
-                }
-                innerTextField()
-            }
+            onValueChange = {vm.EmailUpdate(it)},
+            modifier = Modifier.padding(start = 52.dp, end = 60.dp)
         )
-        Spacer(modifier = Modifier.height(8.dp))
-        Box(
-            modifier = Modifier
-                .padding(start = 52.dp, end = 60.dp)
-                .fillMaxWidth()
-                .height(1.dp)
-                .background(
-                    brush = Brush.linearGradient(
-                        colors = listOf(
-                            Color(0xFFFF6480),
-                            Color(0xFFF22E63)
-                        )
-                    )
-                )
-        )
+
+        Spacer(modifier = Modifier.height(20.dp))
+
         var password by remember { mutableStateOf("") }
-        var isPasswordVisible by remember { mutableStateOf(false) }
-        Column(
+        BasicTextFieldPassword(
+            "Password",
+            value = state.value.password,
+            onValueChange = {vm.PasswordUpdate(it)},
+            R.drawable.eye
+        )
+        Text(
+            "Forgot Password?",
+            textAlign = TextAlign.Right,
+            fontSize = 12.sp,
             modifier = Modifier
-                .fillMaxSize()
-                .padding(top = 24.dp)
-        ) {
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(end = 60.dp),
-                verticalAlignment = Alignment.CenterVertically
-            ){
-                BasicTextField(
-                    value = state.value.pass,
-                    onValueChange = { vm.PasswordUpdate(it) },
-                    modifier = Modifier
-                        .padding(start = 52.dp)
-                        .fillMaxWidth()
-                        .weight(1f),
-                    visualTransformation = if (isPasswordVisible) {
-                        VisualTransformation.None
-                    } else {
-                        PasswordVisualTransformation()
-                    },
-                    decorationBox = { innerTextField ->
-                        if (state.value.pass.isEmpty()) {
-                            Text("Password",
-                                color = Color.Black,
-                                fontSize = 12.sp)
-                        }
-                        innerTextField()
-                    }
-                )
-                IconButton(
-                    onClick = { isPasswordVisible = !isPasswordVisible }
-                ) {
-                    Icon(
-                        painter = painterResource(id = R.drawable.visibility),
-                        contentDescription = null,
-                        modifier = Modifier.size(width =  12.dp, height = 8.dp)
-                    )
-                }
-            }
-            Box(
-                modifier = Modifier
-                    .padding(start = 52.dp, end = 60.dp)
-                    .fillMaxWidth()
-                    .height(1.dp)
-                    .background(
-                        brush = Brush.linearGradient(
-                            colors = listOf(
-                                Color(0xFFFF6480),
-                                Color(0xFFF22E63)
-                            )
-                        )
-                    )
-            )
+                .fillMaxWidth()
+                .padding(top = 8.dp, start = 150.dp, end = 60.dp)
+                .clickable(onClick = {})
 
-            Text(
-                "Forgot Password?",
-                textAlign = TextAlign.Right,
-                fontSize = 12.sp,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(top = 8.dp, start = 150.dp, end = 60.dp)
-                    .clickable(onClick = {})
+        )
 
-            )
-        }
 
         Spacer(modifier = Modifier.height(27.dp))
 
@@ -215,35 +145,13 @@ fun Login(
                 Color(0xFFF22E63)
             )
         )
-        Button(
-            onClick = { navController.navigate(Routes.LandingScreen.route) },
-            shape = CircleShape,
-            colors = ButtonDefaults.buttonColors(
-                containerColor = Color.Transparent
 
-            ),
-            contentPadding = PaddingValues(0.dp),
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(top = 0.dp, start = 76.dp, end = 75.dp)
-                .size(width = 224.dp, height = 58.dp)
-        ) {
-            Box(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .clip(CircleShape)
-                    .background(ButtonGradient)
-                    .padding(vertical = 16.dp),
-                contentAlignment = Alignment.Center,
+        AppButton(
+            text = "Let's Combat",
+            onClick = {navController.navigate("LandingScreen")},
+            modifier = Modifier.padding(horizontal = 76.dp)
+        )
 
-                ){
-                Text(
-                    text = "Create Account",
-                    fontSize = 16.sp,
-                    fontWeight = FontWeight.Bold
-                )
-            }
-        }
 
 
         Text(

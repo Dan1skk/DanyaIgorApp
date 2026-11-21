@@ -45,6 +45,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.navigation.NavController
 import com.example.danyaigorapp.appnavigation.Routes
 import com.example.danyaigorapp.landing.side.SideMenu
+import com.example.diuikit.components.LandingBottomBar
 import kotlinx.coroutines.launch
 
 
@@ -74,7 +75,14 @@ fun LandingScreen(
                 scope.launch { drawerState.open() }
             })},
 
-            bottomBar = {LandingBottomBar(navController = navController)}
+            bottomBar = {LandingBottomBar(
+                navController = navController,
+                R.drawable.buttombar,
+                R.drawable.schedule,
+                R.drawable.statistics_icon,
+                R.drawable.location_pin,
+                R.drawable.chat,
+                R.drawable.profile)}
 
 
         ) { innerPadding ->

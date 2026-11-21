@@ -14,6 +14,7 @@ import com.example.danyaigorapp.schedulegame.ScheduleScreen
 import com.example.danyaigorapp.singup.CreateAccount
 import com.example.danyaigorapp.singup.CreateAccountVM
 import com.example.danyaigorapp.ui.theme.DanyaIgorAppTheme
+import com.example.diuikit.ui.theme.DIuikitTheme
 
 class MainActivity : ComponentActivity() {
 
@@ -22,7 +23,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            DanyaIgorAppTheme {
+            DIuikitTheme{
 
                 AppNavigation()
 

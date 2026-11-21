@@ -9,7 +9,6 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -32,15 +31,12 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 import androidx.compose.foundation.text.BasicTextField
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.TextButton
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.draw.clip
@@ -48,6 +44,9 @@ import androidx.compose.ui.graphics.Brush
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.example.danyaigorapp.appnavigation.Routes
+import com.example.diuikit.components.AppButton
+import com.example.diuikit.components.appBasicTextField.BasicTextFieldBlya
+import com.example.diuikit.components.appBasicTextField.BasicTextFieldPassword
 
 
 @Composable
@@ -81,9 +80,8 @@ fun CreateAccount(
 
             Text(
                 "Create Account",
-                color = Color(0xFFFA5075),
-                fontSize = 22.sp,
-                fontWeight = FontWeight(700),
+                color = MaterialTheme.colorScheme.primary,
+                style = MaterialTheme.typography.headlineLarge,
                 textAlign = TextAlign.Start,
                 modifier = Modifier
                     .fillMaxWidth()
@@ -94,8 +92,7 @@ fun CreateAccount(
 
             Text(
                 "Hi, kindly fill in the form to proceed combat",
-                fontSize = 12.sp,
-                textAlign = TextAlign.Start,
+                style = MaterialTheme.typography.bodyLarge,
                 fontWeight = FontWeight(400),
                 modifier = Modifier
                     .fillMaxWidth()
@@ -104,19 +101,29 @@ fun CreateAccount(
 
             )
 
-            CreateAccountElement(
-                "Full Name",
+            Spacer(modifier = Modifier.height(37.dp))
+
+            BasicTextFieldBlya(
+                header = "Full Name",
                 value = state.value.full_name,
-                onValueChange = { vm.Full_Nmae(it) })
+                onValueChange = {vm.Full_Nmae(it)},
+                modifier = Modifier.padding(start = 52.dp, end = 60.dp)
+            )
+
+//            CreateAccountElement(
+//                "Full Name",
+//                value = state.value.full_name,
+//                onValueChange = { vm.Full_Nmae(it) })
+
+            Spacer(modifier = Modifier.height(24.dp))
 
 
-            Spacer(modifier = Modifier.height(0.dp))
-
-            CreateAccountElement(
-                "User Name",
+            BasicTextFieldBlya(
+                header = "User Name",
                 value = state.value.user_name,
-                onValueChange = { vm.User_Nmae(it) })
-
+                onValueChange = {vm.User_Nmae(it)},
+                modifier = Modifier.padding(start = 52.dp, end = 60.dp)
+            )
             Column(
                 modifier = Modifier
                     .fillMaxSize()
@@ -127,27 +134,16 @@ fun CreateAccount(
                     modifier = Modifier
                         .fillMaxSize()
                 ) {
-                    Text("+234", fontSize = 12.sp)
+                    Text("+234", style = MaterialTheme.typography.bodyLarge)
 
                     Spacer(modifier = Modifier.width(25.dp))
 
                     var phone by remember { mutableStateOf("") }
-                    BasicTextField(
+                    BasicTextFieldBlya(
+                        header = "Your Phone",
                         value = state.value.phone,
-                        onValueChange = { vm.Phone(it) },
-                        modifier = Modifier
-                            .padding(top = 0.dp, start = 0.dp, end = 0.dp)
-                            .fillMaxWidth(),
-                        decorationBox = { innerTextField ->
-                            if (state.value.phone.isEmpty()) {
-                                Text(
-                                    "Your Phone",
-//                                    color = Color.Black,
-                                    fontSize = 12.sp
-                                )
-                            }
-                            innerTextField()
-                        }
+                        onValueChange = {vm.Phone(it)},
+                        modifier = Modifier.padding(start = 0.dp, end = 60.dp)
                     )
                 }
 
@@ -158,7 +154,7 @@ fun CreateAccount(
                     Box(
                         modifier = Modifier
                             .padding(start = 0.dp)
-                            .width(35.dp)
+                            .width(40.dp)
                             .fillMaxWidth()
                             .height(1.dp)
                             .background(
@@ -193,118 +189,37 @@ fun CreateAccount(
 
             }
 
-            CreateAccountElement(
-                "Email",
+            Spacer(modifier = Modifier.height(24.dp))
+
+
+            BasicTextFieldBlya(
+                header = "Email",
                 value = state.value.email,
-                onValueChange = { vm.Email(it) })
+                onValueChange = {vm.Email(it)},
+                modifier = Modifier.padding(start = 52.dp, end = 60.dp)
+            )
 
-            BasicTextField(
+            BasicTextFieldPassword(
+                "Password",
                 value = state.value.password,
-                onValueChange = { vm.Password(it) },
-                modifier = Modifier
-                    .padding(top = 24.dp, start = 52.dp, end = 176.dp)
-                    .fillMaxWidth(),
-                decorationBox = { innerTextField ->
-                    if (state.value.password.isEmpty()) {
-                        Text(
-                            "Password",
-//                            color = Color.Black,
-                            fontSize = 12.sp
-                        )
-                    }
-                    innerTextField()
-                }
-            )
-            Spacer(modifier = Modifier.height(8.dp))
-            Box(
-                modifier = Modifier
-                    .padding(start = 52.dp, end = 60.dp)
-                    .fillMaxWidth()
-                    .height(1.dp)
-                    .background(
-                        brush = Brush.linearGradient(
-                            colors = listOf(
-                                Color(0xFFFF6480),
-                                Color(0xFFF22E63)
-                            )
-                        )
-                    )
-
-
+                onValueChange = {vm.PasswordUpdate(it)},
+                R.drawable.eye
             )
 
-            BasicTextField(
+            BasicTextFieldPassword(
+                "Config Password",
                 value = state.value.conf_password,
-                onValueChange = { vm.Conf_Password(it) },
-                modifier = Modifier
-                    .padding(top = 24.dp, start = 52.dp, end = 176.dp)
-                    .fillMaxWidth(),
-                decorationBox = { innerTextField ->
-                    if (state.value.conf_password.isEmpty()) {
-                        Text(
-                            "Config password",
-//                            color = Color.Black,
-                            fontSize = 12.sp
-                        )
-                    }
-                    innerTextField()
-                }
-            )
-            Spacer(modifier = Modifier.height(8.dp))
-            Box(
-                modifier = Modifier
-                    .padding(start = 52.dp, end = 60.dp)
-                    .fillMaxWidth()
-                    .height(1.dp)
-                    .background(
-                        brush = Brush.linearGradient(
-                            colors = listOf(
-                                Color(0xFFFF6480),
-                                Color(0xFFF22E63)
-                            )
-                        )
-                    )
-
-
+                onValueChange = {vm.Conf_PasswordUpdate(it)},
+                R.drawable.eye
             )
 
+            Spacer(modifier = Modifier.height(44.dp))
 
-            val ButtonGradient = Brush.linearGradient(
-                colors = listOf(
-                    Color(0xFFFF6480),
-                    Color(0xFFF22E63)
-                )
+            AppButton(
+                text = "Create Account",
+                onClick = {navController.navigate("LandingScreen")},
+                modifier = Modifier.padding(horizontal = 83.dp)
             )
-            Button(
-                onClick = { navController.navigate(Routes.LandingScreen.route) },
-                shape = CircleShape,
-                colors = ButtonDefaults.buttonColors(
-                    containerColor = Color.Transparent
-
-                ),
-                contentPadding = PaddingValues(0.dp),
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(top = 44.dp, start = 76.dp, end = 75.dp)
-                    .size(width = 224.dp, height = 58.dp)
-            ) {
-                Box(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .clip(CircleShape)
-                        .background(ButtonGradient)
-                        .padding(vertical = 16.dp),
-                    contentAlignment = Alignment.Center,
-
-                    ) {
-                    Text(
-                        text = "Create Account",
-                        fontSize = 16.sp,
-                        fontWeight = FontWeight.Bold
-                    )
-                }
-
-            }
 
 
             Text(

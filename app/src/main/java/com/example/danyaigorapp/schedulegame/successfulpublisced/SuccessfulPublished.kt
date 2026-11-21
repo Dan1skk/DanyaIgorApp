@@ -6,6 +6,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -17,6 +18,7 @@ import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
@@ -28,6 +30,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.blur
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
@@ -41,6 +44,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.danyaigorapp.R
+import com.example.diuikit.components.AppButton
 
 
 @Preview(showBackground = true, showSystemUi = true)
@@ -146,37 +150,11 @@ fun SuccessfulMessage(
 
         Spacer(Modifier.height(33.dp))
 
-        Button(
-            onClick = {  },
-            shape = CircleShape,
-            colors = ButtonDefaults.buttonColors(
-                containerColor = Color.Transparent
-
-            ),
-            contentPadding = PaddingValues(0.dp),
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(horizontal = 100.dp)
-                .size(width = 224.dp, height = 58.dp)
-        ) {
-            Box(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .clip(CircleShape)
-                    .background(Gradient)
-                    .padding(vertical = 16.dp),
-                contentAlignment = Alignment.Center,
-
-                ) {
-                Text(
-                    text = "Statistics",
-                    fontSize = 14.sp,
-                    fontWeight = FontWeight.Bold
-                )
-
-            }
-
-        }
+        AppButton(
+            text = "Statistics",
+            onClick = {},
+            modifier = Modifier.padding(horizontal = 76.dp),
+        )
 
 
 

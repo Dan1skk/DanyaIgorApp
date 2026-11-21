@@ -24,4 +24,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "DanyaIgorApp"
 include(":app")
- 
+include(":DIuikit")

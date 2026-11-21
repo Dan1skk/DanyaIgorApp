@@ -51,7 +51,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.input.pointer.motionEventSpy
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
-import com.example.danyaigorapp.landing.LandingBottomBar
+//import com.example.danyaigorapp.landing.LandingBottomBar
 import com.example.danyaigorapp.schedulegame.ScheduleScreen
 import com.example.danyaigorapp.schedulegame.successfulpublisced.SuccessfulMessage
 

@@ -22,7 +22,7 @@ class LoginVM() : ViewModel() {
         newpassword: String
     ){
         _state.update {
-            it.copy(pass = newpassword)
+            it.copy(password = newpassword)
         }
     }
 

@@ -42,7 +42,7 @@ class CreateAccountVM() : ViewModel() {
         }
     }
 
-    fun Password(
+    fun PasswordUpdate(
         newpassword: String
     ){
         _state.update {
@@ -50,7 +50,7 @@ class CreateAccountVM() : ViewModel() {
         }
     }
 
-    fun Conf_Password(
+    fun Conf_PasswordUpdate(
         newconfpassword: String
     ){
         _state.update {

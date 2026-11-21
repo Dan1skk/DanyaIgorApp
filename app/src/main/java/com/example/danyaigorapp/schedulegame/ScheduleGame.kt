@@ -4,6 +4,7 @@ import android.icu.text.UnicodeSetSpanner
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.gestures.scrollable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -12,11 +13,14 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Checkbox
@@ -47,11 +51,15 @@ import com.example.danyaigorapp.singup.CreateAccountVM
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.movableContentWithReceiverOf
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.composed
 import androidx.compose.ui.draw.blur
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.modifier.modifierLocalConsumer
 import com.example.danyaigorapp.appnavigation.Routes
 import com.example.danyaigorapp.schedulegame.successfulpublisced.SuccessfulMessage
+import com.example.diuikit.components.AppButton
+import com.example.diuikit.components.Checkbox
 
 
 @Composable
@@ -69,6 +77,8 @@ fun ScheduleScreen(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(horizontal = 30.dp)
+                .verticalScroll(rememberScrollState())
+
 
         ) {
 
@@ -144,18 +154,7 @@ fun ScheduleScreen(
 
                 Spacer(modifier = Modifier.weight(1f))
 
-                var checked by remember { mutableStateOf(false) }
-
-                Checkbox(
-                    checked = checked,
-                    onCheckedChange = { checked = it },
-                    colors = CheckboxDefaults.colors(
-                        checkedColor = Color(0xFFF22E63),
-                        checkmarkColor = Color.White,
-                        uncheckedColor = Color(0xFFF22E63)
-                    ),
-
-                    )
+                Checkbox()
 
                 Text(
                     "Notification",
@@ -163,42 +162,17 @@ fun ScheduleScreen(
                 )
             }
 
-            val ButtonGradient = Brush.linearGradient(
-                colors = listOf(
-                    Color(0xFFFF6480),
-                    Color(0xFFF22E63)
-                )
-            )
-            Button(
+
+
+            Spacer(modifier = Modifier.height(40.dp))
+
+            AppButton(
+                text = "Publish",
                 onClick = {showSuccess = true},
-                shape = CircleShape,
-                colors = ButtonDefaults.buttonColors(
-                    containerColor = Color.Transparent
+                modifier = Modifier.padding(horizontal = 60.dp)
+            )
 
-                ),
-                contentPadding = PaddingValues(0.dp),
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(top = 30.dp, start = 66.dp, end = 75.dp)
-                    .size(width = 224.dp, height = 58.dp)
-            ) {
-                Box(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .clip(CircleShape)
-                        .background(ButtonGradient)
-                        .padding(vertical = 16.dp),
-                    contentAlignment = Alignment.Center,
-
-                    ) {
-                    Text(
-                        text = "Publish",
-                        fontSize = 14.sp,
-                        fontWeight = FontWeight.Bold
-                    )
-                }
-
-            }
+            Spacer(modifier = Modifier.height(67.dp))
 
 
 
