@@ -38,6 +38,7 @@ import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.text.PlatformTextStyle
 import androidx.compose.ui.text.TextStyle
 import androidx.navigation.NavController
+import com.example.diuikit.components.Logout
 import com.example.diuikit.ui.theme.HeadlineMedium
 import com.example.diuikit.ui.theme.PoppinsFontFamily
 import com.example.diuikit.ui.theme.Title2ExtraBold
@@ -165,26 +166,10 @@ fun SideMenu(
 
         Spacer(modifier = Modifier.height(101.25.dp))
 
-        Row(
-            modifier = Modifier.fillMaxWidth().padding(start = 143.dp),
-            verticalAlignment = Alignment.CenterVertically
-        ){
-
-
-            Icon(
-                painter = painterResource(id = R.drawable.logout_icon),
-                contentDescription = null,
-                tint = Color(0xFFFA5075),
-                modifier = Modifier.size(width =  18.dp, height = 18.dp).clickable(onClick = {onLogoutClick()})
-            )
-
-            Spacer(modifier = Modifier.width(18.dp))
-
-            Text("Logout",
-                fontSize = 16.sp,
-            )
-
-        }
+        Logout(
+            navController = navController,
+            R.drawable.logout_icon
+        )
 
 
 
