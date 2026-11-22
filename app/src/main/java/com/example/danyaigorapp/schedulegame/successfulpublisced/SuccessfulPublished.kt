@@ -22,6 +22,7 @@ import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
@@ -45,6 +46,8 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.danyaigorapp.R
 import com.example.diuikit.components.AppButton
+import com.example.diuikit.ui.theme.CaptionRegular
+import com.example.diuikit.ui.theme.PinkGradient
 
 
 @Preview(showBackground = true, showSystemUi = true)
@@ -84,13 +87,6 @@ fun SuccessfulMessage(
         Spacer(modifier = Modifier.height(59.dp))
 
 
-        val Gradient = Brush.linearGradient(
-            colors = listOf(
-                Color(0xFFFF6480),
-                Color(0xFFF22E63)
-            )
-        )
-
         Box(
             modifier = Modifier.fillMaxWidth(),
             contentAlignment = Alignment.Center
@@ -102,7 +98,7 @@ fun SuccessfulMessage(
                     .border(
                         5.dp, Color.White, CircleShape
                     )
-                    .background(Gradient),
+                    .background(brush = PinkGradient),
                 contentAlignment = Alignment.Center
 
 
@@ -127,8 +123,8 @@ fun SuccessfulMessage(
             Text(
                 "Published\nSuccessful",
                 textAlign = TextAlign.Center,
+                style = MaterialTheme.typography.headlineLarge,
                 fontSize = 22.sp,
-                fontWeight = FontWeight(700),
                 color = Color.White
                 )
         }
@@ -142,7 +138,7 @@ fun SuccessfulMessage(
             Text(
                 "Wanna change/edit your \nscheduled game before it \nbegins?",
                 textAlign = TextAlign.Center,
-                fontSize = 14.sp,
+                style = CaptionRegular,
                 color = Color.White
 
             )

@@ -41,12 +41,15 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.input.pointer.stylusHoverIcon
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.example.danyaigorapp.appnavigation.Routes
 import com.example.diuikit.components.AppButton
 import com.example.diuikit.components.appBasicTextField.BasicTextFieldBlya
 import com.example.diuikit.components.appBasicTextField.BasicTextFieldPassword
+import com.example.diuikit.ui.theme.Caption2Bold
+import com.example.diuikit.ui.theme.Caption2Regular
 
 
 @Composable
@@ -92,7 +95,7 @@ fun CreateAccount(
 
             Text(
                 "Hi, kindly fill in the form to proceed combat",
-                style = MaterialTheme.typography.bodyLarge,
+                style = Caption2Regular,
                 fontWeight = FontWeight(400),
                 modifier = Modifier
                     .fillMaxWidth()
@@ -134,7 +137,7 @@ fun CreateAccount(
                     modifier = Modifier
                         .fillMaxSize()
                 ) {
-                    Text("+234", style = MaterialTheme.typography.bodyLarge)
+                    Text("+234", style = Caption2Regular)
 
                     Spacer(modifier = Modifier.width(25.dp))
 
@@ -224,8 +227,7 @@ fun CreateAccount(
 
             Text(
                 "Connect With:",
-                fontSize = 12.sp,
-                fontWeight = FontWeight.Bold,
+                style = Caption2Bold,
                 color = Color(0xFFFA5075),
                 textAlign = TextAlign.Center,
                 modifier = Modifier
@@ -286,7 +288,7 @@ fun CreateAccount(
             ) {
                 Text(
                     "Already have an account?",
-                    fontSize = 12.sp,
+                    style = Caption2Regular,
                     textAlign = TextAlign.Center,
                     modifier = Modifier
                         .fillMaxWidth()
@@ -297,8 +299,7 @@ fun CreateAccount(
                 Text(
                     "Login",
                     color = Color(0xFFFA5075),
-                    fontSize = 12.sp,
-                    fontWeight = FontWeight.Bold,
+                    style = Caption2Bold,
                     modifier = Modifier
                         .clickable(onClick = { navController.navigate(Routes.Login.route) }
                         )

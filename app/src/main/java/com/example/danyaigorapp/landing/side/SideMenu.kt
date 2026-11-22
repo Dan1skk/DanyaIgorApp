@@ -30,6 +30,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.ui.graphics.BlendMode
 import androidx.compose.ui.graphics.CompositingStrategy
 import androidx.compose.ui.layout.ContentScale
@@ -37,6 +38,9 @@ import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.text.PlatformTextStyle
 import androidx.compose.ui.text.TextStyle
 import androidx.navigation.NavController
+import com.example.diuikit.ui.theme.HeadlineMedium
+import com.example.diuikit.ui.theme.PoppinsFontFamily
+import com.example.diuikit.ui.theme.Title2ExtraBold
 
 
 @Composable
@@ -100,12 +104,9 @@ fun SideMenu(
                 ) {
                 Text(
                     "Stone Stellar",
-                    style = TextStyle(
-                        fontSize = 16.sp,
-                        fontWeight = FontWeight.Bold,
-                        color = Color(0xFFFA5075),
-                        platformStyle = PlatformTextStyle(includeFontPadding = false)
-                    ),
+                    style = Title2ExtraBold,
+                    fontSize = 16.sp,
+                    color = Color(0xFFFA5075)
 
 
                     )
@@ -127,6 +128,7 @@ fun SideMenu(
 
                     Text("Gold Player",
                         fontSize = 10.sp,
+                        fontFamily = PoppinsFontFamily,
                         color = Color(0xFFF4C73E))
                 }
             }

@@ -23,25 +23,22 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.diuikit.R
+
 import androidx.navigation.NavController
+import com.example.diuikit.ui.theme.PoppinsFontFamily
 
 
 @Composable
 fun LandingBottomBar(
-    navController: NavController,
-    bottombar_image: Int,
-    shedule_icon: Int,
-    statistics_icon: Int,
-    location_icon: Int,
-    chat_icon: Int,
-    profile_icon: Int
+    navController: NavController
 ) {
     Box(
         modifier = Modifier
             .fillMaxWidth()
     ) {
         Image(
-            painter = painterResource(bottombar_image),
+            painter = painterResource(R.drawable.buttombar),
             contentDescription = null,
             modifier = Modifier
                 .fillMaxWidth()
@@ -64,7 +61,7 @@ fun LandingBottomBar(
 
         ) {
             Icon(
-                painter = painterResource(shedule_icon),
+                painter = painterResource(R.drawable.schedule),
                 contentDescription = null,
                 tint = Color.White,
                 modifier = Modifier
@@ -90,7 +87,7 @@ fun LandingBottomBar(
                     verticalArrangement = Arrangement.Center
                 ) {
                     Icon(
-                        painter = painterResource(statistics_icon),
+                        painter = painterResource(R.drawable.statistics_icon),
                         contentDescription = null,
                         tint = Color.White,
                         modifier = Modifier.clickable(onClick = {})
@@ -101,6 +98,7 @@ fun LandingBottomBar(
                     Text(
                         "Statistics",
                         fontSize = 10.sp,
+                        fontFamily = PoppinsFontFamily,
                         color = Color.White
                     )
                 }
@@ -113,7 +111,7 @@ fun LandingBottomBar(
 
                 ) {
                     Icon(
-                        painter = painterResource(location_icon),
+                        painter = painterResource(R.drawable.location_pin),
                         contentDescription = null,
                         tint = Color.White,
                         modifier = Modifier.clickable(onClick = {})
@@ -124,6 +122,7 @@ fun LandingBottomBar(
                     Text(
                         "Discover",
                         fontSize = 10.sp,
+                        fontFamily = PoppinsFontFamily,
                         color = Color.White
                     )
                 }
@@ -140,7 +139,7 @@ fun LandingBottomBar(
                     verticalArrangement = Arrangement.Center
                 ) {
                     Icon(
-                        painter = painterResource(chat_icon),
+                        painter = painterResource(R.drawable.chat),
                         contentDescription = null,
                         tint = Color.White,
                         modifier = Modifier.clickable(onClick = {})
@@ -151,6 +150,7 @@ fun LandingBottomBar(
                     Text(
                         "Chat",
                         fontSize = 10.sp,
+                        fontFamily = PoppinsFontFamily,
                         color = Color.White
                     )
                 }
@@ -163,7 +163,7 @@ fun LandingBottomBar(
 
                 ) {
                     Icon(
-                        painter = painterResource(profile_icon),
+                        painter = painterResource(R.drawable.profile),
                         contentDescription = null,
                         tint = Color.White,
                         modifier = Modifier.clickable(onClick = {})
@@ -174,6 +174,7 @@ fun LandingBottomBar(
                     Text(
                         "Profile",
                         fontSize = 10.sp,
+                        fontFamily = PoppinsFontFamily,
                         color = Color.White
                     )
                 }

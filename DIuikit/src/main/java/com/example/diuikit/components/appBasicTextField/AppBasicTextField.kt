@@ -14,6 +14,8 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.diuikit.ui.theme.Caption2Regular
+import com.example.diuikit.ui.theme.PinkGradient
 
 @Preview(showBackground = true)
 @Composable
@@ -39,7 +41,7 @@ fun BasicTextFieldBlya(
         modifier = Modifier.fillMaxWidth().then(modifier),
         decorationBox = {innerTextField ->
             if(value.isEmpty()){
-                Text(header, style = MaterialTheme.typography.bodyLarge)
+                Text(header, style = Caption2Regular)
             }
             innerTextField()
         }
@@ -52,9 +54,7 @@ fun BasicTextFieldBlya(
             .then(modifier)
             .fillMaxWidth()
             .height(1.dp)
-            .background(brush = Brush.linearGradient(
-                colors = listOf(Color(0xFFFF6480), Color(0xFFF22E63))
-            ))
+            .background(brush = PinkGradient)
 
     )
 }

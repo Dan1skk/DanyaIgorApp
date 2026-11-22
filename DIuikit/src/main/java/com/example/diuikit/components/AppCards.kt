@@ -22,6 +22,9 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.diuikit.ui.theme.Caption2Bold
+import com.example.diuikit.ui.theme.PinkGradient
+import com.example.diuikit.ui.theme.PoppinsFontFamily
 
 @Composable
 fun LandingCard(
@@ -39,13 +42,7 @@ fun LandingCard(
             .size(width = 315.dp, height = 169.dp)
             .clip(RoundedCornerShape(10.dp))
             .background(
-                brush = Brush.linearGradient(
-                    colors = listOf(
-                        Color(0xFFFF6480),
-                        Color(0xFFF22E63)
-
-                    )
-                )
+                brush = PinkGradient
             )
             .clickable(onClick = route)
     ){
@@ -53,8 +50,7 @@ fun LandingCard(
             modifier = Modifier.padding(top = 30.dp, start = 24.dp, end = 126.dp)
         ) {
             Text(header,
-                fontSize = 12.sp,
-                fontWeight = FontWeight.Bold,
+                style = Caption2Bold,
                 color = Color.White
             )
 
@@ -63,6 +59,7 @@ fun LandingCard(
             Text(description,
                 fontSize = 10.sp,
                 lineHeight = 15.sp,
+                fontFamily = PoppinsFontFamily,
                 color = Color.White
             )
 

@@ -27,6 +27,8 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.diuikit.ui.theme.Caption2Regular
+import com.example.diuikit.ui.theme.PinkGradient
 import java.lang.reflect.Modifier
 
 @Composable
@@ -63,7 +65,7 @@ fun BasicTextFieldPassword(
                     if (value.isEmpty()) {
                         Text(
                             header,
-                            style = MaterialTheme.typography.bodyLarge
+                            style = Caption2Regular
                         )
                     }
                     innerTextField()
@@ -84,14 +86,7 @@ fun BasicTextFieldPassword(
                 .padding(start = 52.dp, end = 60.dp)
                 .fillMaxWidth()
                 .height(1.dp)
-                .background(
-                    brush = Brush.linearGradient(
-                        colors = listOf(
-                            Color(0xFFFF6480),
-                            Color(0xFFF22E63)
-                        )
-                    )
-                )
+                .background(brush = PinkGradient)
         )
     }
 }

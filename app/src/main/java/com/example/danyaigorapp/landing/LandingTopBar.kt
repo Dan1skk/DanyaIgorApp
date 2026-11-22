@@ -16,7 +16,9 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
@@ -26,6 +28,8 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.danyaigorapp.R
+import com.example.diuikit.ui.theme.PinkGradient
+import com.example.diuikit.ui.theme.PoppinsFontFamily
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -39,7 +43,8 @@ fun LandingTopBar(
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(start = 30.dp, end = 27.dp)
+                    .padding(start = 30.dp, end = 27.dp),
+                verticalAlignment = Alignment.CenterVertically
             ){
                 Box(
                     modifier = Modifier
@@ -62,13 +67,7 @@ fun LandingTopBar(
                         .size(24.dp)
                         .clip(CircleShape)
                         .border(
-                            2.dp, brush = Brush.linearGradient(
-                                colors = listOf(
-                                    Color(0xFFFF6480),
-                                    Color(0xFFF22E63)
-
-                                )
-                            ), CircleShape
+                            2.dp, brush = PinkGradient, CircleShape
                         )
                         .clickable { }
                 ) {
@@ -86,10 +85,15 @@ fun LandingTopBar(
                 Spacer(modifier = Modifier.width(2.dp))
 
                 Text("Stone Stellar",
-                    fontSize = 10.sp)
+                    fontFamily = PoppinsFontFamily,
+                    fontSize = 10.sp,
+                    color = Color.Black)
 
 
             }
-        }
+        },
+        colors = TopAppBarDefaults.topAppBarColors(
+            containerColor = Color.White,)
     )
+
 }

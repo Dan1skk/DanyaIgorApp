@@ -76,13 +76,7 @@ fun LandingScreen(
             })},
 
             bottomBar = {LandingBottomBar(
-                navController = navController,
-                R.drawable.buttombar,
-                R.drawable.schedule,
-                R.drawable.statistics_icon,
-                R.drawable.location_pin,
-                R.drawable.chat,
-                R.drawable.profile)}
+                navController = navController)}
 
 
         ) { innerPadding ->
@@ -96,7 +90,7 @@ fun LandingScreen(
                 LandingCard(header = "Schedule",
                     description = "Easily schedule event/games then find like minded players for battle. You up for it?",
                     image = R.drawable.image_5,
-                    route = { navController.navigate(Routes.SplashScreen.route) }
+                    route = { navController.navigate(Routes.ScheduleGame.route) }
                 )
 
                 Spacer(modifier = Modifier.height(10.dp))
@@ -104,7 +98,7 @@ fun LandingScreen(
                 LandingCard(header = "Statistics",
                     description = "All data from previous and upcoming games can be found here ",
                     image = R.drawable.image_6,
-                    route = { navController.navigate(Routes.Login.route) }
+                    route = { navController.navigate(Routes.LandingScreen.route) }
                 )
 
                 Spacer(modifier = Modifier.height(10.dp))
@@ -120,7 +114,7 @@ fun LandingScreen(
                 LandingCard(header = "Message Players",
                     description = "Found the profile of a player that interests you? Start a conversation",
                     image = R.drawable.image_8,
-                    route = { navController.navigate(Routes.Login.route) }
+                    route = { navController.navigate(Routes.LandingScreen.route) }
                 )
 
                 Spacer(modifier = Modifier.height(10.dp))

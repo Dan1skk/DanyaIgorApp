@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -25,6 +26,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.danyaigorapp.R
+import com.example.diuikit.ui.theme.PinkGradient
 
 
 @Composable
@@ -58,11 +60,7 @@ fun SideMenuList(
                     .graphicsLayer {
                         blendMode = BlendMode.SrcIn
                     }
-                    .background(
-                        brush = Brush.linearGradient(
-                            colors = listOf(Color(0xFFFFF6480), Color(0xFFFF22E63))
-                        )
-                    )
+                    .background(brush = PinkGradient)
             )
 
 
@@ -71,7 +69,7 @@ fun SideMenuList(
         Spacer(modifier = Modifier.width(24.1.dp))
 
         Text(header,
-            fontSize = 16.sp,
+            style = MaterialTheme.typography.titleMedium
         )
 
 

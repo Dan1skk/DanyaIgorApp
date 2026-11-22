@@ -60,6 +60,7 @@ import com.example.danyaigorapp.appnavigation.Routes
 import com.example.danyaigorapp.schedulegame.successfulpublisced.SuccessfulMessage
 import com.example.diuikit.components.AppButton
 import com.example.diuikit.components.Checkbox
+import com.example.diuikit.components.appBasicTextField.BasicTextFieldBlya
 
 
 @Composable
@@ -108,34 +109,38 @@ fun ScheduleScreen(
 
             Spacer(modifier = Modifier.height(30.dp))
 
-            ScheduleScreenElement(
+            BasicTextFieldBlya(
                 "Game Name",
                 state.value.game_name,
-                onValueChange = {vm.Game_Name(it)}
+                onValueChange = {vm.Game_Name(it)},
+                modifier = Modifier
             )
 
             Spacer(modifier = Modifier.height(24.dp))
 
-            ScheduleScreenElement(
+            BasicTextFieldBlya(
                 "Category",
                 state.value.category,
-                onValueChange = {vm.Category(it)}
+                onValueChange = {vm.Category(it)},
+                modifier = Modifier
             )
 
             Spacer(modifier = Modifier.height(18.dp))
 
-            ScheduleScreenElement(
+            BasicTextFieldBlya(
                 "Winning Price",
                 state.value.winning_price,
-                onValueChange = {vm.Winning_Price(it)}
+                onValueChange = {vm.Winning_Price(it)},
+                modifier = Modifier
             )
 
             Spacer(modifier = Modifier.height(251.dp))
 
-            ScheduleScreenElement(
+            BasicTextFieldBlya(
                 "Description",
                 state.value.description,
-                onValueChange = {vm.Description(it)}
+                onValueChange = {vm.Description(it)},
+                modifier = Modifier
             )
 
             Spacer(modifier = Modifier.height(55.dp))

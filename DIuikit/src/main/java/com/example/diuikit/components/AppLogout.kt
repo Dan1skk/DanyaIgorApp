@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -33,13 +34,14 @@ fun Logout(
             painter = painterResource(logout_icon),
             contentDescription = null,
             tint = Color(0xFFFA5075),
-            modifier = Modifier.size(width =  18.dp, height = 18.dp).clickable(onClick = {})
+            modifier = Modifier.size(width =  18.dp, height = 18.dp).clickable(onClick = {navController.navigate("ScheduleScreen")}),
+
         )
 
         Spacer(modifier = Modifier.width(18.dp))
 
         Text("Logout",
-            fontSize = 16.sp,
+            style = MaterialTheme.typography.titleMedium,
         )
 
     }

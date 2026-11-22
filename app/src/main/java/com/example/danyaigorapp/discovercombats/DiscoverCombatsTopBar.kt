@@ -9,10 +9,12 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.systemBarsPadding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
@@ -33,6 +35,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.text.TextStyle
+import com.example.diuikit.ui.theme.PinkGradient
 
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
@@ -45,12 +48,9 @@ fun SearchPlace(){
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .background(brush = Brush.linearGradient(
-                colors = listOf(
-                    Color(0xFFFF6480),
-                    Color(0xFFF22E63)
-                )))
-            .size(266.dp)
+            .height(266.dp)
+            .background(brush = PinkGradient)
+
     ) {
         Column(
             modifier = Modifier
@@ -72,8 +72,7 @@ fun SearchPlace(){
             ){
                 Text(
                     "Discover \nCombats",
-                    fontSize = 22.sp,
-                    fontWeight = FontWeight(700),
+                    style = MaterialTheme.typography.headlineLarge,
                     color = Color.White
 
                 )
@@ -82,10 +81,9 @@ fun SearchPlace(){
 
                 Text(
                     "FILTER",
-                    fontSize = 12.sp,
-                    fontWeight = FontWeight(700),
+                    style = MaterialTheme.typography.headlineMedium,
                     color = Color.White,
-                    modifier = Modifier.padding(top = 30.dp)
+                    modifier = Modifier.padding(top = 40.dp)
 
                 )
             }
@@ -129,8 +127,8 @@ fun SearchPlace(){
                             if(searchText.isEmpty()){
                                 Text(
                                     "Search Combat",
-                                    fontSize = 12.sp,
-                                    color = Color.Gray
+                                    style = MaterialTheme.typography.bodyMedium,
+                                    color = Color(0xFFC9C9C9)
                                 )
                             }
                             innerTextField()

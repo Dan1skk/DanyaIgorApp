@@ -21,6 +21,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.diuikit.ui.theme.PoppinsFontFamily
 
 @Preview(showBackground = true)
 @Composable
@@ -50,7 +51,6 @@ fun AppButton(
             .then(modifier)
             .clip(RoundedCornerShape(100))
             .clickable {
-                Log.i("AppButton", "Клик по кнопке - Текст: $text")
                 onClick()
             }
             .background(brush = backgroundBrush),
@@ -60,7 +60,8 @@ fun AppButton(
             text = text,
             color = Color.White,
             fontSize = 14.sp,
-            fontWeight = FontWeight.Bold
+            fontWeight = FontWeight.Bold,
+            fontFamily = PoppinsFontFamily
         )
     }
 

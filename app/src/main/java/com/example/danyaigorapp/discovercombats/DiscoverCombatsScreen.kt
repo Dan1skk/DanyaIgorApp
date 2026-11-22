@@ -54,6 +54,7 @@ import androidx.navigation.compose.rememberNavController
 //import com.example.danyaigorapp.landing.LandingBottomBar
 import com.example.danyaigorapp.schedulegame.ScheduleScreen
 import com.example.danyaigorapp.schedulegame.successfulpublisced.SuccessfulMessage
+import com.example.diuikit.components.LandingBottomBar
 
 //@Preview(showBackground = true, showSystemUi = true)
 //@Composable
@@ -67,7 +68,7 @@ fun DiscoverCombatsScreen(
 ){
     Scaffold(
 
-        bottomBar = {DiscoverCombatsBottomBar(navController = navController)},
+        bottomBar = { LandingBottomBar(navController = navController)},
         contentWindowInsets = WindowInsets(0.dp),
         containerColor = Color.Transparent,
 
@@ -75,7 +76,6 @@ fun DiscoverCombatsScreen(
         Column(
             modifier = Modifier
                 .fillMaxWidth()
-                .systemBarsPadding()
         ) {
 
             SearchPlace()
