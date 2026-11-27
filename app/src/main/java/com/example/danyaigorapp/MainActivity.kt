@@ -5,18 +5,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.text.input.TextFieldState
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.runtime.remember
-import androidx.compose.ui.graphics.Color
 import com.example.danyaigorapp.appnavigation.AppNavigation
-import com.example.danyaigorapp.appnavigation.Routes
-import com.example.danyaigorapp.discovercombats.DiscoverCombatsScreen
-import com.example.danyaigorapp.schedulegame.ScheduleScreen
-import com.example.danyaigorapp.singup.CreateAccount
-import com.example.danyaigorapp.singup.CreateAccountVM
-import com.example.danyaigorapp.ui.theme.DanyaIgorAppTheme
 import com.example.diuikit.ui.theme.DIuikitTheme
 
 class MainActivity : ComponentActivity() {
